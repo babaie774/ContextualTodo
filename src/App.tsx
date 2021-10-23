@@ -1,5 +1,6 @@
 import React from 'react'
-import MyContext from './Component/MyContext'
+import TodoContext from './Component/Contexts/TodoContext'
+import HangleStatusContext from './Component/Contexts/HangleStatusContext'
 import TodoList from './Component/TodoList'
 import './Style/Style.css'
 
@@ -9,11 +10,18 @@ export default function App() {
     { id: 1, content: "task 1", status: "complete" },
     { id: 1, content: "task 2", status: "complete" },
   ]
+
+  const handleStatus = () => {
+    console.log("clicked")
+  }
+
   return (
-    <MyContext.Provider value={todo}>
-      <div>
-        <TodoList />
-      </div >
-    </MyContext.Provider>
+    <TodoContext.Provider value={todo} >
+      <HangleStatusContext.Provider value={{ handleStatus: () => void; }} >
+        <div>
+          <TodoList />
+        </div >
+      </HangleStatusContext.Provider>
+    </TodoContext.Provider>
   )
 }
