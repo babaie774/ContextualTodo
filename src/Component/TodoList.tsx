@@ -1,6 +1,19 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import MyContext from './MyContext'
 
 export default function TodoList() {
+    const todoContext = useContext(MyContext)
+    // console.log(todos)
+    const todoes = todoContext.map((todo: any) => {
+        console.log(todo)
+        return (
+            <div className="todo-item">
+                <div className="checker"><span className=""><input type="checkbox" /></span></div>
+                <span>{todo.content}</span>
+                <a href="javascript:void(0);" className="float-right remove-todo-item"><i className="icon-close"></i></a>
+            </div>
+        )
+    })
     return (
         <div>
             <div className="container">
@@ -17,7 +30,8 @@ export default function TodoList() {
                                     <li role="presentation" className="nav-item completed-task"><a href="#" className="nav-link">Completed</a></li>
                                 </ul>
                                 <div className="todo-list">
-                                    <div className="todo-item">
+                                    {todoes}
+                                    {/* <div className="todo-item">
                                         <div className="checker"><span className=""><input type="checkbox" /></span></div>
                                         <span>Create theme</span>
                                         <a href="javascript:void(0);" className="float-right remove-todo-item"><i className="icon-close"></i></a>
@@ -37,7 +51,7 @@ export default function TodoList() {
                                         <div className="checker"><span><input type="checkbox" /></span></div>
                                         <span>Error solve in HTML template</span>
                                         <a href="javascript:void(0);" className="float-right remove-todo-item"><i className="icon-close"></i></a>
-                                    </div>
+                                    </div> */}
                                 </div>
                             </div>
                         </div>
