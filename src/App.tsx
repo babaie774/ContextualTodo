@@ -17,7 +17,7 @@ export default function App() {
 
   return (
     <TodoContext.Provider value={todo} >
-      <HangleStatusContext.Provider value={{ handleStatus: () => void; }} >
+      <HangleStatusContext.Provider value={{ handleStatus: handleStatus }} >
         <div>
           <TodoList />
         </div >
