@@ -1,6 +1,6 @@
 import React from 'react'
 import TodoContext from './Component/Contexts/TodoContext'
-import HangleStatusContext from './Component/Contexts/HangleStatusContext'
+import HandleStatusContext from './Component/Contexts/HandleStatusContext'
 import TodoList from './Component/TodoList'
 import './Style/Style.css'
 
@@ -17,11 +17,11 @@ export default function App() {
 
   return (
     <TodoContext.Provider value={todo} >
-      <HangleStatusContext.Provider value={{ handleStatus: handleStatus }} >
+      <HandleStatusContext.Provider value={{ handleStatus: handleStatus }} >
         <div>
           <TodoList />
         </div >
-      </HangleStatusContext.Provider>
+      </HandleStatusContext.Provider>
     </TodoContext.Provider>
   )
 }

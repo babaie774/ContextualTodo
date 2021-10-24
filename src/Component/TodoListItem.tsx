@@ -2,12 +2,12 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useContext } from 'react'
 import TodoContext from './Contexts/TodoContext'
-import HangleStatusContext from './Contexts/HangleStatusContext';
+import HandleStatusContext from './Contexts/HandleStatusContext';
 
 
 export default function TodoListItem() {
     const todoList = useContext(TodoContext);
-    const { handleStatus: handleStatus } = useContext(HangleStatusContext);
+    const { handleStatus: handleStatus } = useContext(HandleStatusContext);
 
     const todoes = todoList.map((todo: any, index) => {
         return (
@@ -20,7 +20,7 @@ export default function TodoListItem() {
     })
 
     return (
-        <div>
+        <div className="todo-list">
             {todoes}
         </div>
     )
