@@ -5,9 +5,11 @@ import TodoContext from './Contexts/TodoContext'
 import HandleStatusContext from './Contexts/HandleStatusContext';
 
 
+
 export default function TodoListItem() {
     const todoList = useContext(TodoContext);
     const { handleStatus: handleStatus } = useContext(HandleStatusContext);
+
 
     const todoes = todoList.map((todo: any, index) => {
         return (
@@ -18,9 +20,8 @@ export default function TodoListItem() {
             </div>
         )
     })
-
     return (
-        <div className="todo-list">
+        <div>
             {todoes}
         </div>
     )
