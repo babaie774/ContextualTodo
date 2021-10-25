@@ -1,6 +1,7 @@
 import React from 'react'
 import TodoContext from './Component/Contexts/TodoContext'
-import HangleStatusContext from './Component/Contexts/HangleStatusContext'
+import HandleStatusContext from './Component/Contexts/HandleStatusContext'
+import HandleInputTodo from './Component/Contexts/HandleInputTodo'
 import TodoList from './Component/TodoList'
 import './Style/Style.css'
 
@@ -14,14 +15,20 @@ export default function App() {
   const handleStatus = () => {
     console.log("clicked")
   }
+  const handleTodo = (event: any) => {
+
+    console.log(event.target.value)
+  }
 
   return (
     <TodoContext.Provider value={todo} >
-      <HangleStatusContext.Provider value={{ handleStatus: handleStatus }} >
-        <div>
-          <TodoList />
-        </div >
-      </HangleStatusContext.Provider>
-    </TodoContext.Provider>
+      <HandleInputTodo.Provider value={{ HandleInputTodo: handleStatus }} >
+        <HandleStatusContext.Provider value={{ handleStatus: handleTodo }} >
+          <div>
+            <TodoList />
+          </div >
+        </HandleStatusContext.Provider>
+      </HandleInputTodo.Provider>
+    </TodoContext.Provider >
   )
 }

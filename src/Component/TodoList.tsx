@@ -2,6 +2,7 @@
 /* eslint-disable no-script-url */
 import React from 'react'
 import TodoListItem from './TodoListItem'
+import TodoFormInput from './TodoFormInput'
 
 export default function TodoList() {
 
@@ -13,9 +14,7 @@ export default function TodoList() {
                     <div className="col-md-12">
                         <div className="card card-white">
                             <div className="card-body">
-                                <form action="javascript:void(0);">
-                                    <input type="text" className="form-control add-task" placeholder="New Task..." />
-                                </form>
+                                <TodoFormInput />
                                 <ul className="nav nav-pills todo-nav">
                                     <li role="presentation" className="nav-item all-task active"><a href="#" className="nav-link">All</a></li>
                                     <li role="presentation" className="nav-item active-task"><a href="#" className="nav-link">Active</a></li>
