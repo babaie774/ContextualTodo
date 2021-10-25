@@ -20,6 +20,8 @@ export default function App() {
     console.log(event.target.value)
   }
 
+
+
   return (
     <TodoContext.Provider value={todo} >
       <HandleInputTodo.Provider value={{ HandleInputTodo: handleStatus }} >
