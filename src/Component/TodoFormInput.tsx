@@ -7,7 +7,7 @@ export default function TodoFormInput() {
     return (
         <div>
             <form action="javascript:void(0);">
-                <input type="text" className="form-control add-task" onClick={(e) => handleStatus(e)} placeholder="New Task..." />
+                <input type="text" className="form-control add-task" onClick={() => handleStatus()} placeholder="New Task..." />
             </form>
         </div>
     )
