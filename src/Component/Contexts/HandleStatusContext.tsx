@@ -2,7 +2,7 @@ import React from 'react'
 
 const HandleStatusContext = React.createContext(
     {
-        handleStatus: () => { }
+        StatusTodo: (id: number) => { }
     }
 );
 
