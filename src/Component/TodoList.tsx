@@ -3,7 +3,7 @@
 import React from 'react'
 import ListItem from './ListItem'
 import TodoNav from './TodoNav'
-import FromAddTodo from './FromAddTodo'
+import FormInput from './FormInput'
 
 export default function TodoList() {
     return (
@@ -13,7 +13,7 @@ export default function TodoList() {
                     <div className="col-md-12">
                         <div className="card card-white">
                             <div className="card-body">
-                                <FromAddTodo />
+                                <FormInput />
                                 <TodoNav />
                                 <ListItem />
                             </div>

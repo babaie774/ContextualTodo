@@ -3,24 +3,21 @@ import React, { useState, useContext } from 'react'
 import InputTodoContext from '../Component/Contexts/InputTodoContext'
 
 export default function FormInput() {
+
     const [input, setInput] = useState({});
     const { InputTodo: HandleNewTodo } = useContext(InputTodoContext);
 
     const HandleInputTodo = (event: any) => {
         setInput({ input: event.target.value });
+        // console.log(event);
     }
 
     const handleSubmit = (event: any) => {
         event.preventDefault();
-        console.log(event)
-        if (event.keyCode === 13) {
-            console.log('OK')
-            HandleNewTodo(input);
-            setInput({ input: '' });
-        }
+        // console.log('OK')
+        HandleNewTodo(input);
+        setInput({ input: '' });
     }
-
-
 
     return (
         <div>
