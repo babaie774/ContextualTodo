@@ -1,8 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable no-script-url */
 import React from 'react'
-import TodoListItem from './TodoListItem'
-
+import ListItem from './ListItem'
 import TodoNav from './TodoNav'
 import FromAddTodo from './FromAddTodo'
 
@@ -16,13 +15,12 @@ export default function TodoList() {
                             <div className="card-body">
                                 <FromAddTodo />
                                 <TodoNav />
-                                <TodoListItem />
+                                <ListItem />
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div >
-
     )
 }

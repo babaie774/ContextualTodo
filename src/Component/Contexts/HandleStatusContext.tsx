@@ -1,9 +1,10 @@
 import React from 'react'
 
-const HangleStatusContext = React.createContext(
+
+const HandleStatusContext = React.createContext(
     {
-        handleStatus: () => { }
+        StatusTodo: (id: number) => { }
     }
 );
 
-export default HangleStatusContext;
+export default HandleStatusContext;
