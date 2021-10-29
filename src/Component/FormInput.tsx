@@ -4,7 +4,7 @@ import InputTodoContext from '../Component/Contexts/InputTodoContext'
 
 export default function FormInput() {
 
-    const [input, setInput] = useState({});
+    const [input, setInput] = useState<any>({});
     const { InputTodo: HandleNewTodo } = useContext(InputTodoContext);
 
     const HandleInputTodo = (event: any) => {
@@ -19,10 +19,13 @@ export default function FormInput() {
         setInput({ input: '' });
     }
 
+    const val = input?.input;
+
+
     return (
         <div>
             <form action="javascript:void(0);" onSubmit={(event) => { handleSubmit(event) }}>
-                <input type="text" className="form-control add-task" onChange={(event) => { HandleInputTodo(event) }} placeholder="New Task..." />
+                <input type="text" value={val} className="form-control add-task" onChange={(event) => { HandleInputTodo(event) }} placeholder="New Task..." />
             </form>
         </div>
     )

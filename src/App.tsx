@@ -15,15 +15,9 @@ export default function App() {
   const [todoes, addtodoes] = useState(todo)
 
   const HandleNewTodo = (input: any) => {
-    console.log(input) //{input: 'sdfdsf'}
-    const { p } = input;
-    console.log(p) //undefined
-    const { obj: val } = input;
-    console.log(val) //undefined
-    // addtodoes([...todoes, { id: todoes.length + 1, content: input, status: "active" }])
-
+    const { input: input2 } = input;
+    addtodoes([...todoes, { id: todoes.length + 1, content: input2, status: "active" }])
   }
-  // console.log(todo);
 
 
   const handleStatusTodo = (id: number) => {
