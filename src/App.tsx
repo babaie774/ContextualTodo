@@ -34,15 +34,13 @@ export default function App() {
   }
 
   const handleFilterValue = (filter: string) => {
-    console.log(newtodo)
-    const newtodo = Object.entries(todo).map((item) => {
-      console.log(newtodo)
-      if (item.status === filter) {
-        return item
-      }
-    })
-
-    console.log(newtodo)
+    const newTodo = [...todoes]
+    if (filter === 'all') {
+      addtodoes(newTodo)
+    } else {
+      const newTodoes = newTodo?.filter((item: any) => item.status === filter)
+      addtodoes(newTodoes)
+    }
   }
 
 
