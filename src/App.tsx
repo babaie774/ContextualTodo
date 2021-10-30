@@ -20,12 +20,32 @@ export default function App() {
   }
 
 
+
+
   const handleStatusTodo = (id: number) => {
-    console.log(id);
-    if (todo.id === id) {
-      todo.status = !todo.status
-    }
+    const newTodo = [...todoes]
+    newTodo.map((item: any) => {
+      if (item.id === id) {
+        item.status = item.status === "active" ? "completed" : "active"
+      }
+      return newTodo
+    })
+    addtodoes(newTodo)
   }
+
+  const handleFilterValue = (filter: string) => {
+    console.log(newtodo)
+    const newtodo = Object.entries(todo).map((item) => {
+      console.log(newtodo)
+      if (item.status === filter) {
+        return item
+      }
+    })
+
+    console.log(newtodo)
+  }
+
+
 
 
 
@@ -34,7 +54,7 @@ export default function App() {
       <InputTodoContext.Provider value={{ InputTodo: HandleNewTodo }} >
         <HandleStatusContext.Provider value={{ StatusTodo: handleStatusTodo }} >
           <div>
-            <TodoList />
+            <TodoList handleFilterValue={handleFilterValue} />
           </div >
         </HandleStatusContext.Provider>
       </InputTodoContext.Provider>

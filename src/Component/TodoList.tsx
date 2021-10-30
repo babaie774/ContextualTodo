@@ -5,7 +5,11 @@ import ListItem from './ListItem'
 import TodoNav from './TodoNav'
 import FormInput from './FormInput'
 
-export default function TodoList() {
+type TodoNavProps = {
+    handleFilterValue: (filter: string) => void
+}
+
+const TodoList: React.FC<TodoNavProps> = (props) => {
     return (
         <div>
             <div className="container">
@@ -14,7 +18,7 @@ export default function TodoList() {
                         <div className="card card-white">
                             <div className="card-body">
                                 <FormInput />
-                                <TodoNav />
+                                <TodoNav handleFilterValue={props.handleFilterValue} />
                                 <ListItem />
                             </div>
                         </div>
@@ -24,3 +28,5 @@ export default function TodoList() {
         </div >
     )
 }
+
+export default TodoList 
