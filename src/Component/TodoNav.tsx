@@ -19,7 +19,6 @@ const TodoNav: React.FC<TodoNavProps> = (props) => {
     return (
         <ul className="nav nav-pills todo-nav">
             {navList}
-
         </ul>
     )
 }
