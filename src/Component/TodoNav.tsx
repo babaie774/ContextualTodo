@@ -13,7 +13,6 @@ const TodoNav: React.FC<TodoNavProps> = (props) => {
     ]
 
     const navList = status.map((item, index) => {
-        // eslint-disable-next-line no-template-curly-in-string
         return <li key={index} role="presentation" className={`nav-item ${item}-task`} > <a href="#" onClick={() => props.handleFilterValue(item)} className="nav-link">{item}</a></li >
     })
     return (

@@ -7,6 +7,7 @@ import FormInput from './FormInput'
 
 type TodoNavProps = {
     handleFilterValue: (filter: string) => void
+    filter: string
 }
 
 const TodoList: React.FC<TodoNavProps> = (props) => {
@@ -19,7 +20,7 @@ const TodoList: React.FC<TodoNavProps> = (props) => {
                             <div className="card-body">
                                 <FormInput />
                                 <TodoNav handleFilterValue={props.handleFilterValue} />
-                                <ListItem />
+                                <ListItem filter={props.filter} />
                             </div>
                         </div>
                     </div>

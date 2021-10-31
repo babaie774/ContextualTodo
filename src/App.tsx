@@ -10,11 +10,13 @@ export default function App() {
 
 
   const todo: any = [
-    { id: 1, content: "task 1", status: "active" },
+    { id: 1, content: "task 1", status: "completed" },
     { id: 2, content: "task 2", status: "active" },
   ]
 
   const [todoes, setTodoes] = useState(todo)
+  const [filter, setFilter] = useState("active");
+
 
   const HandleNewTodo = (input: any) => {
     const { input: input2 } = input;
@@ -37,25 +39,15 @@ export default function App() {
 
 
   const handleFilterValue = (filter: string) => {
-    const newTodo = [...todoes]
-    const filteredTodo = newTodo.map((item: any) => {
-      return item.status === filter ? item : {}
-    })
-
-    setTodoes(filteredTodo)
-  }
-
-
-
-
-
+    setFilter(filter);
+  };
 
   return (
     <TodoContext.Provider value={todoes} >
       <InputTodoContext.Provider value={{ InputTodo: HandleNewTodo }} >
         <HandleStatusContext.Provider value={{ StatusTodo: handleStatusTodo }} >
           <div>
-            <TodoList handleFilterValue={handleFilterValue} />
+            <TodoList handleFilterValue={handleFilterValue} filter={filter} />
           </div >
         </HandleStatusContext.Provider>
       </InputTodoContext.Provider>
