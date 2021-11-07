@@ -1,12 +1,17 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import TodoContext from './Component/Contexts/TodoContext'
 import HandleStatusContext from './Component/Contexts/HandleStatusContext'
 import InputTodoContext from './Component/Contexts/InputTodoContext'
 import TodoList from './Component/TodoList'
 import './Style/Style.css'
+import { getData } from './Component/Services/HandleApi'
+
+
 
 export default function App() {
 
+  const data = getData();
+  console.log(data)
 
 
   const todo: any = [
