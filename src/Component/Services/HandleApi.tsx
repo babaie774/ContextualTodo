@@ -21,3 +21,4 @@ const deleteData = () => {
 
 
 export { getData, postData, putData, deleteData }
+

@@ -1,16 +1,12 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
-/* eslint-disable no-script-url */
-import React from 'react'
-import ListItem from './ListItem'
-import TodoNav from './TodoNav'
-import FormInput from './FormInput'
+import React, { useContext } from 'react'
+import TodoContext from './Contexts/TodoContext'
 
-type TodoNavProps = {
-    handleFilterValue: (filter: string) => void
-    filter: string
-}
 
-const TodoList: React.FC<TodoNavProps> = (props) => {
+const TodoList: React.FC<any> = (props) => {
+    const todo = useContext(TodoContext)
+    todo((data: any) => {
+        console.log(data)
+    })
     return (
         <div>
             <div className="container">
@@ -18,9 +14,6 @@ const TodoList: React.FC<TodoNavProps> = (props) => {
                     <div className="col-md-12">
                         <div className="card card-white">
                             <div className="card-body">
-                                <FormInput />
-                                <TodoNav handleFilterValue={props.handleFilterValue} />
-                                <ListItem filter={props.filter} />
                             </div>
                         </div>
                     </div>
