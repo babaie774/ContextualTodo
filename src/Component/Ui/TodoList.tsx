@@ -1,12 +1,13 @@
 /* eslint-disable no-script-url */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useContext } from 'react'
-import TodoContext from '../Contexts/TodoContext'
-import TodoItem from './TodoItem'
+import TodoStateContext from '../Contexts/TodoStateContext'
+import TodoItem from './TodoItem/TodoItem'
+import AddTodoForm from './TodoItem/AddTodoForm'
 
 
 const TodoList: React.FC<any> = (props) => {
-    const todoes = useContext(TodoContext)
+    const todoes = useContext(TodoStateContext)
 
     const TodoItems = todoes.map((items, key) => {
         return <TodoItem index={key} TodoData={items} />
@@ -18,9 +19,7 @@ const TodoList: React.FC<any> = (props) => {
                 <div className="col-md-12">
                     <div className="card card-white">
                         <div className="card-body">
-                            <form action="javascript:void(0);">
-                                <input type="text" className="form-control add-task" placeholder="New Task..." />
-                            </form>
+                            <AddTodoForm />
                             <ul className="nav nav-pills todo-nav">
                                 <li role="presentation" className="nav-item all-task active"><a href="#" className="nav-link">All</a>
                                 </li>

@@ -1,15 +1,24 @@
 import React, { useState, useEffect, useReducer } from 'react'
-import TodoContext from './Component/Contexts/TodoContext'
+import TodoStateContext from './Component/Contexts/TodoStateContext'
+import TodoDispatchContext from './Component/Contexts/TodoDispatchContext'
 import './Style/Style.css'
 import { getData } from './Component/Services/HandleApi'
 import { TodoReducer } from './Component/Reducers/TodoReducer'
 import { FilterReducer } from './Component/Reducers/FilterReducer'
 import TodoList from './Component/Ui/TodoList';
-import Loading from './Component/Ui/Loading';
+import Loading from './Component/Ui/Loading/Loading';
 
 
 
 export default function App() {
+
+  const todoInit: Array<object> = [];
+  const filterInit: string = 'All'
+
+  const [TodoState, dispatchState] = useReducer(TodoReducer, todoInit);
+  const [FilterState, dispatchFilter] = useReducer(FilterReducer, filterInit)
+
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     getData().then(res => {
@@ -22,20 +31,15 @@ export default function App() {
   }, [])
 
 
-  const todoInit: Array<object> = [];
-  const filterInit: string = 'All'
-
-  const [TodoState, dispatchState] = useReducer(TodoReducer, todoInit);
-  const [FilterState, dispatchFilter] = useReducer(FilterReducer, filterInit)
-
-  const [loading, setLoading] = useState(false);
-
+  console.log(TodoState)
 
   return (
     <div>
-      <TodoContext.Provider value={TodoState as any} >
-        {loading === false ? <Loading /> : <TodoList />}
-      </TodoContext.Provider >
+      <TodoStateContext.Provider value={TodoState as any} >
+        <TodoDispatchContext.Provider value={dispatchState}>
+          {loading === false ? <Loading /> : <TodoList />}
+        </TodoDispatchContext.Provider>
+      </TodoStateContext.Provider >
     </div >
   )
 }

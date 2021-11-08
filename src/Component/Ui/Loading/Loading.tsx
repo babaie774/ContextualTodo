@@ -1,5 +1,5 @@
 import React from 'react'
-import imgloading from '../../assets/image/loading.gif'
+import imgloading from '../../../assets/image/loading.gif'
 
 export default function Loading() {
     const Style = {
