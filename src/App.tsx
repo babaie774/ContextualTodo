@@ -2,51 +2,39 @@ import React, { useState, useEffect, useReducer } from 'react'
 import TodoContext from './Component/Contexts/TodoContext'
 import './Style/Style.css'
 import { getData } from './Component/Services/HandleApi'
-import TodoList from './Component/TodoList';
+import { TodoReducer } from './Component/Reducers/TodoReducer'
+import { FilterReducer } from './Component/Reducers/FilterReducer'
+import TodoList from './Component/Ui/TodoList';
+import Loading from './Component/Ui/Loading';
 
 
 
 export default function App() {
 
-
-  const todo: any = [];
-
   useEffect(() => {
     getData().then(res => {
-      dispatch({ type: 'GET', payload: res.data })
-      setLoading(true)
+      setTimeout(() => {
+        //for showing loading better
+        dispatchState({ type: 'GET', payload: res.data })
+        setLoading(true)
+      }, 1500)
     })
   }, [])
 
-  const TodoReducer = (state: any, action: any) => {
-    switch (action.type) {
-      case 'GET':
-        return action.payload
-      case 'ADD':
-        return [...state, action.payload]
-      case 'REMOVE':
-        return state.filter((item: any) => item.id !== action.payload)
-      default:
-        return state
-    }
-  }
 
+  const todoInit: Array<object> = [];
+  const filterInit: string = 'All'
 
-  const [state, dispatch] = useReducer(TodoReducer, todo);
+  const [TodoState, dispatchState] = useReducer(TodoReducer, todoInit);
+  const [FilterState, dispatchFilter] = useReducer(FilterReducer, filterInit)
+
   const [loading, setLoading] = useState(false);
 
 
-  const content = loading === false ? <h1>Loading...</h1> : <h1>content</h1>
-
-  // state.map((item: any) => {
-  //   console.log(item)
-  // })
-
   return (
     <div>
-      <TodoContext.Provider value={state as any} >
-        {content}
-        <TodoList />
+      <TodoContext.Provider value={TodoState as any} >
+        {loading === false ? <Loading /> : <TodoList />}
       </TodoContext.Provider >
     </div >
   )

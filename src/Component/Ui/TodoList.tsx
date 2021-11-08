@@ -1,15 +1,15 @@
 /* eslint-disable no-script-url */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useContext } from 'react'
-import TodoContext from './Contexts/TodoContext'
-import TodoItem from './Ui/TodoItem'
+import TodoContext from '../Contexts/TodoContext'
+import TodoItem from './TodoItem'
 
 
 const TodoList: React.FC<any> = (props) => {
     const todoes = useContext(TodoContext)
 
-    const TodoItem = todoes.map((items) => {
-        return <TodoItem TodoData={items} />
+    const TodoItems = todoes.map((items, key) => {
+        return <TodoItem index={key} TodoData={items} />
     })
 
     return (
@@ -29,7 +29,7 @@ const TodoList: React.FC<any> = (props) => {
                                 <li role="presentation" className="nav-item completed-task"><a href="#" className="nav-link">Completed</a></li>
                             </ul>
                             <div className="todo-list">
-                                {TodoItem}
+                                {TodoItems}
                             </div>
                         </div>
                     </div>
