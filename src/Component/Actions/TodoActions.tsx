@@ -7,6 +7,14 @@ export const AddTodoAction = (text: string) => {
         payload: {
             id: uniqid(),
             title: text,
+            status: 'active'
         }
     };
+}
+
+export const HandleFilter = (item: string) => {
+    return {
+        type: item.toUpperCase(),
+        payload: item
+    }
 }

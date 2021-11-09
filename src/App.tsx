@@ -11,30 +11,33 @@ import Loading from './Component/Ui/Loading/Loading';
 
 export default function App() {
 
+  useEffect(() => {
+    getData().then(res => {
+      setTimeout(() => {
+        setLoading(true)
+        dispatchState({ type: 'GET', payload: res.data })
+      }, 500)
+    })
+  }, [])
+
   const todoInit: Array<object> = [];
-  const filterInit: string = 'All'
+  const filterInit: string = 'all'
 
   const [TodoState, dispatchState] = useReducer(TodoReducer, todoInit);
   const [FilterState, dispatchFilter] = useReducer(FilterReducer, filterInit)
 
-  const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    getData().then(res => {
-      setTimeout(() => {
-        dispatchState({ type: 'GET', payload: res.data })
-        setLoading(true)
-      }, 500)
-    })
-  }, [])
+  const [loading, setLoading] = useState(false);
 
   const valueStore = { FilterState, TodoState, dispatchState, dispatchFilter }
 
   return (
     <div>
-      <Store.Provider value={valueStore} >
-        {loading === false ? <Loading /> : <TodoList />}
-      </Store.Provider >
+      {loading === false ? <Loading /> :
+        <Store.Provider value={valueStore} >
+          <TodoList />
+        </Store.Provider >
+      }
     </div >
   )
 }
