@@ -21,12 +21,10 @@ export default function App() {
 
   useEffect(() => {
     getData().then(res => {
-      console.log(res)
       setTimeout(() => {
-        //for showing loading better
         dispatchState({ type: 'GET', payload: res.data })
         setLoading(true)
-      }, 1500)
+      }, 500)
     })
   }, [])
 
@@ -34,7 +32,7 @@ export default function App() {
 
   return (
     <div>
-      <Store.Provider value={valueStore as any} >
+      <Store.Provider value={valueStore} >
         {loading === false ? <Loading /> : <TodoList />}
       </Store.Provider >
     </div >

@@ -1,18 +1,11 @@
 /* eslint-disable no-script-url */
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useContext } from 'react'
-import Store from '../Contexts/Store'
-import TodoItem from './TodoItem/TodoItem'
+import React from 'react'
 import AddTodoForm from './TodoItem/AddTodoForm'
+import TodoItems from './TodoItem/TodoItems'
 
 
-const TodoList: React.FC<any> = () => {
-    const { TodoState } = useContext(Store)
-
-    const TodoItems = TodoState.map((items: any, key: any) => {
-        return <TodoItem index={key} TodoData={items} />
-    })
-
+const TodoList: React.FC = () => {
     return (
         <div className="container">
             <div className="row">
@@ -27,9 +20,7 @@ const TodoList: React.FC<any> = () => {
                                 </li>
                                 <li role="presentation" className="nav-item completed-task"><a href="#" className="nav-link">Completed</a></li>
                             </ul>
-                            <div className="todo-list">
-                                {TodoItems}
-                            </div>
+                            <TodoItems />
                         </div>
                     </div>
                 </div>

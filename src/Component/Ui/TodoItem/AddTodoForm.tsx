@@ -6,7 +6,7 @@ import Store from '../../Contexts/Store'
 export default function AddTodoForm() {
     const [valueInput, setValueInput] = React.useState('')
 
-    const dispatchState = React.useContext(Store)
+    const { dispatchState } = React.useContext(Store)
 
     const HandleInputValue = (e: React.ChangeEvent) => {
         const Target = e.target as HTMLInputElement
@@ -19,11 +19,8 @@ export default function AddTodoForm() {
         setValueInput('')
     }
 
-
-
-
     return (
-        <form onSubmit={(event) => { handleSubmit(event) }} action="javascript:void(0);">
+        <form onSubmit={(event) => { handleSubmit(event) }}>
             <input type="text" value={valueInput} onChange={(event) => { HandleInputValue(event) }} className="form-control add-task" placeholder="New Task..." />
         </form>
     )
