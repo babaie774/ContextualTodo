@@ -1,12 +1,12 @@
 import React from 'react'
 import { AddTodoAction } from '../../Actions/TodoActions'
-import TodoDispatchContext from '../../Contexts/TodoDispatchContext'
+import Store from '../../Contexts/Store'
 
 
 export default function AddTodoForm() {
     const [valueInput, setValueInput] = React.useState('')
 
-    const TodoDispatchContexts = React.useContext(TodoDispatchContext)
+    const dispatchState = React.useContext(Store)
 
     const HandleInputValue = (e: React.ChangeEvent) => {
         const Target = e.target as HTMLInputElement
@@ -15,7 +15,7 @@ export default function AddTodoForm() {
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault()
-        TodoDispatchContexts(AddTodoAction(valueInput))
+        dispatchState(AddTodoAction(valueInput))
         setValueInput('')
     }
 

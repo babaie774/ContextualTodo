@@ -2,9 +2,13 @@ import axios from 'axios';
 
 const getData = async () => {
     const data = await axios.get('http://localhost:3004/todoes')
-        .then(response => response).then(response => response).then(data => data)
-
+        .then(response => response).then(data => data)
     return data
+
+    // const response = await fetch('http://localhost:3004/todoes')
+    // console.log(await response.json)
+    // return await response
+
 }
 
 const postData = (data: any) => {

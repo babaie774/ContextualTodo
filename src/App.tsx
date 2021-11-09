@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useReducer } from 'react'
-import TodoStateContext from './Component/Contexts/TodoStateContext'
-import TodoDispatchContext from './Component/Contexts/TodoDispatchContext'
+import Store from './Component/Contexts/Store'
 import './Style/Style.css'
 import { getData } from './Component/Services/HandleApi'
 import { TodoReducer } from './Component/Reducers/TodoReducer'
@@ -22,6 +21,7 @@ export default function App() {
 
   useEffect(() => {
     getData().then(res => {
+      console.log(res)
       setTimeout(() => {
         //for showing loading better
         dispatchState({ type: 'GET', payload: res.data })
@@ -30,16 +30,13 @@ export default function App() {
     })
   }, [])
 
-
-  console.log(TodoState)
+  const valueStore = { FilterState, TodoState, dispatchState, dispatchFilter }
 
   return (
     <div>
-      <TodoStateContext.Provider value={TodoState as any} >
-        <TodoDispatchContext.Provider value={dispatchState}>
-          {loading === false ? <Loading /> : <TodoList />}
-        </TodoDispatchContext.Provider>
-      </TodoStateContext.Provider >
+      <Store.Provider value={valueStore as any} >
+        {loading === false ? <Loading /> : <TodoList />}
+      </Store.Provider >
     </div >
   )
 }

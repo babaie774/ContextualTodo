@@ -1,15 +1,15 @@
 /* eslint-disable no-script-url */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useContext } from 'react'
-import TodoStateContext from '../Contexts/TodoStateContext'
+import Store from '../Contexts/Store'
 import TodoItem from './TodoItem/TodoItem'
 import AddTodoForm from './TodoItem/AddTodoForm'
 
 
-const TodoList: React.FC<any> = (props) => {
-    const todoes = useContext(TodoStateContext)
+const TodoList: React.FC<any> = () => {
+    const { TodoState } = useContext(Store)
 
-    const TodoItems = todoes.map((items, key) => {
+    const TodoItems = TodoState.map((items: any, key: any) => {
         return <TodoItem index={key} TodoData={items} />
     })
 
