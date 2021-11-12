@@ -11,6 +11,17 @@ import Loading from './Component/Ui/Loading/Loading';
 
 export default function App() {
 
+  const todoInit: Array<object> = [];
+  const filterInit: string = 'all'
+
+  const [loading, setLoading] = useState(false);
+
+
+  const [TodoState, dispatchState] = useReducer(TodoReducer, todoInit);
+  const [FilterState, dispatchFilter] = useReducer(FilterReducer, filterInit)
+
+
+
   useEffect(() => {
     getData().then(res => {
       setTimeout(() => {
@@ -20,14 +31,9 @@ export default function App() {
     })
   }, [])
 
-  const todoInit: Array<object> = [];
-  const filterInit: string = 'all'
-
-  const [TodoState, dispatchState] = useReducer(TodoReducer, todoInit);
-  const [FilterState, dispatchFilter] = useReducer(FilterReducer, filterInit)
+  console.log(FilterState)
 
 
-  const [loading, setLoading] = useState(false);
 
   const valueStore = { FilterState, TodoState, dispatchState, dispatchFilter }
 

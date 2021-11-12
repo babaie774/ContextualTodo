@@ -8,10 +8,13 @@ export default function TodoItems() {
 
     interface ITodo {
         id: number | string,
-        title: string,
+        title?: string,
+        status?: string
     }
 
+
     const filteredTodo = FilterState !== 'all' ? TodoState.filter((item) => { return item.status === FilterState }) : TodoState
+
     const TodoItems = filteredTodo.map((items: ITodo) => {
         return <TodoItem index={items.id} TodoData={items} />
     })

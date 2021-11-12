@@ -1,7 +1,6 @@
 import uniqid from 'uniqid';
 
 export const AddTodoAction = (text: string) => {
-    console.log('AddTodoAction', text);
     return {
         type: 'ADD',
         payload: {
@@ -16,5 +15,15 @@ export const HandleFilter = (item: string) => {
     return {
         type: item.toUpperCase(),
         payload: item
+    }
+}
+
+
+export const ChangeStatus = (id: string | number) => {
+    return {
+        type: 'CHANGE_STATUS',
+        payload: {
+            id: id,
+        }
     }
 }

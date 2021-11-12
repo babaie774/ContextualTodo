@@ -13,7 +13,8 @@ export default function NavFilters() {
     ]
 
     const filterItem = filters.map(item => {
-        return <li role="presentation" onClick={() => { dispatchFilter(HandleFilter(item)) }} className={`nav-item ${item}-task`} ><a href="#" className="nav-link">{item}</a></li>
+        // eslint-disable-next-line jsx-a11y/anchor-is-valid
+        return <li role="presentation" className={`nav-item ${item}-task`} ><a href="#" className="nav-link" onClick={() => { dispatchFilter(HandleFilter(item)) }} >{item} </a></li>
     })
 
     return (

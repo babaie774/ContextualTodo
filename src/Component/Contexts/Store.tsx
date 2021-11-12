@@ -2,8 +2,8 @@ import React from 'react'
 
 interface ITodo {
     id: number | string,
-    title: string,
-    status: string,
+    title?: string,
+    status?: string,
 }
 
 type DispatchStateType = {

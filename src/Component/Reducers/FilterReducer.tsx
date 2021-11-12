@@ -1,4 +1,11 @@
-export const FilterReducer = (state: any, action: any) => {
+type action = {
+    type: string;
+    payload: string;
+}
+
+
+export const FilterReducer = (state: string, action: action) => {
+    console.log('HandleFilter', action);
     switch (action.type) {
         case 'All':
             return action.payload;
