@@ -1,4 +1,10 @@
-export const TodoReducer = (state: any, action: any) => {
+type actinType = {
+    type: string;
+    payload: any;
+}
+
+
+export const TodoReducer = (state: any, action: actinType) => {
     switch (action.type) {
         case 'GET':
             return action.payload
