@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import Store from '../../Contexts/Store'
 import { HandleFilter } from '../../Actions/TodoActions'
+import Button from '@mui/material/Button'
 
 
 export default function NavFilters() {
@@ -13,8 +14,7 @@ export default function NavFilters() {
     ]
 
     const filterItem = filters.map(item => {
-        // eslint-disable-next-line jsx-a11y/anchor-is-valid
-        return <li role="presentation" className={`nav-item ${item}-task`} ><a href="#" className="nav-link" onClick={() => { dispatchFilter(HandleFilter(item)) }} >{item} </a></li>
+        return <Button variant="contained" color="primary" sx={{ m: 0.5 }} onClick={() => { dispatchFilter(HandleFilter(item)) }}>{item}</Button>
     })
 
     return (

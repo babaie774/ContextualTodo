@@ -1,6 +1,6 @@
 /* eslint-disable no-script-url */
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useContext, useEffect } from 'react'
+import React, { useContext } from 'react'
 import Store from '../../Contexts/Store'
 import { ChangeStatus } from '../../Actions/TodoActions'
 

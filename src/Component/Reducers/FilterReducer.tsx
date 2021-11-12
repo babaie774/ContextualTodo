@@ -7,7 +7,7 @@ type action = {
 export const FilterReducer = (state: string, action: action) => {
     console.log('HandleFilter', action);
     switch (action.type) {
-        case 'All':
+        case 'ALL':
             return action.payload;
         case 'ACTIVE':
             return action.payload;

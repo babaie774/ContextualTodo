@@ -11,7 +11,7 @@ import Loading from './Component/Ui/Loading/Loading';
 
 export default function App() {
 
-  const todoInit: Array<object> = [];
+  const todoInit: Array<object> = [{ id: 1, title: 'Todo 1', status: 'all' }];
   const filterInit: string = 'all'
 
   const [loading, setLoading] = useState(false);
