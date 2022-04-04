@@ -1,7 +1,6 @@
-import React, { useState, useEffect, useReducer } from 'react'
+import React, { useState, useEffect, useReducer, } from 'react'
 import Store from './Component/Contexts/Store'
 import './Style/Style.css'
-import { getData } from './Component/Services/HandleApi'
 import { TodoReducer } from './Component/Reducers/TodoReducer'
 import { FilterReducer } from './Component/Reducers/FilterReducer'
 import TodoList from './Component/Ui/TodoList';
@@ -13,26 +12,21 @@ export default function App() {
 
   const todoInit: Array<object> = [{ id: 1, title: 'Todo 1', status: 'all' }];
   const filterInit: string = 'all'
-
   const [loading, setLoading] = useState(false);
-
-
   const [TodoState, dispatchState] = useReducer(TodoReducer, todoInit);
   const [FilterState, dispatchFilter] = useReducer(FilterReducer, filterInit)
 
 
-
   useEffect(() => {
-    getData().then(res => {
-      setTimeout(() => {
-        setLoading(true)
-        dispatchState({ type: 'GET', payload: res.data })
-      }, 500)
-    })
+    const data2 = JSON.parse(localStorage.getItem('todo') || '{}');
+    dispatchState({ type: 'GET', payload: data2 });
+    setLoading(true);
   }, [])
 
-  console.log(FilterState)
 
+  useEffect(() => {
+    localStorage.setItem('todo', JSON.stringify(TodoState));
+  }, [TodoState])
 
 
   const valueStore = { FilterState, TodoState, dispatchState, dispatchFilter }

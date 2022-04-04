@@ -5,7 +5,6 @@ type action = {
 
 
 export const FilterReducer = (state: string, action: action) => {
-    console.log('HandleFilter', action);
     switch (action.type) {
         case 'ALL':
             return action.payload;

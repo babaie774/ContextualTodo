@@ -6,7 +6,7 @@ import { ChangeStatus } from '../../Actions/TodoActions'
 
 
 interface ITodo {
-    index: number | string;
+    key: number | string;
     TodoData: {
         id: number | string,
         title?: string,
